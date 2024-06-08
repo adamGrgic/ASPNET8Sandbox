@@ -16,7 +16,39 @@ namespace SandboxModule.Modules.LINQDictionary
 
         }
 
-        
+
+        public Stopwatch Aggregatev1([FromBody] LINQParameterConfigurationModel configuration)
+        {
+            string[] fruits = { "apple", "mango", "orange", "passionfruit", "grape" };
+
+            // create a list of strings of variable length
+                // lower limit
+                // upper limit
+                // number of strings 
+                // generate random list
+
+
+            // create seed string
+
+
+
+
+            // Determine whether any string in the array is longer than "banana".
+            string longestName =
+                fruits.Aggregate("banana",
+                                (longest, next) =>
+                                    next.Length > longest.Length ? next : longest,
+                                fruit => fruit.ToUpper());
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            //var dog = randomStringList.Select(x => x + randomStringTransformation);
+
+            stopwatch.Stop();
+
+            return stopwatch;
+        }
+
         public Stopwatch Selectv1([FromBody] LINQParameterConfigurationModel configuration)
         {
 
@@ -116,23 +148,22 @@ namespace SandboxModule.Modules.LINQDictionary
             return randomStringList;
         }
 
-
-        private string GenerateRandomString(int randomLetters, int variance = 0)
+        private string GenerateRandomString(int randomLettersCount, int variance = 0)
         {
             // for now
             // TODO: Add error handling for when variance is greater than random letters
+            var random = new Random();
+
             if (variance > 0)
             {
-                var random = new Random();
-                randomLetters = randomLetters - random.Next(variance);
+                var randomVariant = random.Next(-variance, variance + 1);
+                randomLettersCount = randomLettersCount + randomVariant;
             } 
 
             var randomString = new StringBuilder();
 
-
-            for (int i = 0; i < randomLetters; i++)
+            for (int i = 0; i < randomLettersCount; i++)
             {
-                var random = new Random();
                 char randomLetter = (char)('a' + random.Next(0, 26));
                 randomString.Append(randomLetter);
             }
