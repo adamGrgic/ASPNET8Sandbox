@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SandboxModule;
 using SandboxModule.Modules.LINQDictionary.Models;
 using System.Diagnostics;
@@ -29,7 +30,7 @@ namespace SandboxModule.Modules.LINQDictionary
             var random = new Random();
             var upperThreshold = randomStringList.Count;
 
-            for (var i = 0; i < configuration.BuilderIterations; i++)
+            for (var i = 0; i < configuration.RandomStringListBuilderIterations; i++)
             {
                 var randomInteger = random.Next(randomStringList.Count);
                 var randomString = randomStringList[randomInteger];
@@ -61,7 +62,7 @@ namespace SandboxModule.Modules.LINQDictionary
             var random = new Random();
             var upperThreshold = randomStringList.Count;
 
-            for (var i = 0; i < configuration.BuilderIterations; i++)
+            for (var i = 0; i < configuration.RandomStringListBuilderIterations; i++)
             {
                 var randomInteger = random.Next(randomStringList.Count);
                 var randomString = randomStringList[randomInteger];
@@ -70,13 +71,49 @@ namespace SandboxModule.Modules.LINQDictionary
 
             var randomStringTransformation = GenerateRandomString(configuration.RandomStringTransformationLength);
 
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew();
 
             var dog = randomStringList.Select(x => x + randomStringTransformation).ToList();
 
             stopwatch.Stop();
 
             return stopwatch;
+        }
+
+        public Stopwatch Takev1([FromBody] LINQParameterConfigurationModel configuration)
+        {
+            var randomStringList = GenerateRandomStringList(
+                    configuration.RandomStringListCount,
+                    configuration.RandomStringLength,
+                    configuration.RandomStringListVariance
+                );
+
+            if (configuration.RandomNumberVarianceSelection > 0)
+            {
+                var random = new Random();
+                configuration.RandomNumberSelection = random.Next(configuration.RandomNumberVarianceSelection);
+            }
+
+            var stopwatch = Stopwatch.StartNew();
+
+            var dog = randomStringList.Take(configuration.RandomNumberSelection);
+
+            stopwatch.Stop();
+
+            return stopwatch;
+
+        }
+
+        private List<string> GenerateRandomStringList(int numberOfStrings, int stringLength, int stringVariance)
+        {
+            var randomStringList = new List<string>();
+
+            for (var i = 0; i < numberOfStrings; i++)
+            {
+                randomStringList.Add(GenerateRandomString(stringLength, stringVariance));
+            }
+
+            return randomStringList;
         }
 
 

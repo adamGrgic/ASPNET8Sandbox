@@ -1,6 +1,0 @@
-﻿Should create a list of LINQ queries as .cs files 
-Then create a list of operations with optional parameters 
-
-
-... maybe create wrappers for each operation? 
- - timing / properties to ascertain from the query (??)
