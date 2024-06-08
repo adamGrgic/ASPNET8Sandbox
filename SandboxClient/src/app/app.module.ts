@@ -12,12 +12,19 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule, MatTabNav, MatTabNavPanel} from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { LinqdictionaryComponent } from './linqdictionary/linqdictionary.component';
+import { TestComponent } from './test/test.component';
+import { AppComponentNavComponent } from './app-component-nav/app-component-nav.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LinqdictionaryComponent,
+    TestComponent,
+    AppComponentNavComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +37,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatTabNavPanel,
     MatListModule,
     MatIconModule,
+    MatButton,
+    MatButtonModule,
     RouterModule,
     AppRoutingModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

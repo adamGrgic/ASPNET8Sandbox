@@ -1,21 +1,14 @@
 
 
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-    <mat-tab label="Modules">
-      <mat-sidenav-container class="example-container" >
-        <mat-sidenav #sidenav mode="side" opened style="width: 25%;">
-          <mat-nav-list>
-            <a mat-list-item href="#">Link 1</a>
-            <a mat-list-item href="#">Link 2</a>
-            <a mat-list-item href="#">Link 3</a>
-          </mat-nav-list>
-        </mat-sidenav>
-        <mat-sidenav-content>
-          <button mat-button (click)="sidenav.toggle()">Toggle Sidenav</button>
-          <p>Content goes here...</p>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-
+    <mat-tab label="ASP.NET / C#">
+      <app-app-component-nav></app-app-component-nav>
+      
+      
+    </mat-tab>
+    <mat-tab label="TypeScript">
+      
+      
       
     </mat-tab>
   </mat-tab-group>
@@ -51,4 +44,3 @@
 </mat-sidenav-container> -->
 
 
-<router-outlet></router-outlet>
