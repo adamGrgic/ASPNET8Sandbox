@@ -136,6 +136,29 @@ namespace SandboxModule.Modules.LINQDictionary
 
         }
 
+        // Check to see if all elements in a sequence satisfy a condition
+        public Stopwatch Allv1([FromBody]LINQParameterConfigurationModel configuration)
+        {
+
+
+            // create random list of strings of n length 
+            var randomStringList = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                            configuration.RandomStringLength,
+                                                            configuration.RandomStringListVariance);
+
+
+            var stopwatch = Stopwatch.StartNew();
+
+            // use .All to check if they are all of n length
+            var isListSatisfactory = randomStringList.All(x => x.Length >= 10);
+
+            stopwatch.Stop();
+
+            return stopwatch;
+
+        }
+
+
         private List<string> GenerateRandomStringList(int numberOfStrings, int stringLength, int stringVariance)
         {
             var randomStringList = new List<string>();
@@ -158,7 +181,7 @@ namespace SandboxModule.Modules.LINQDictionary
             {
                 var randomVariant = random.Next(-variance, variance + 1);
                 randomLettersCount = randomLettersCount + randomVariant;
-            } 
+            }
 
             var randomString = new StringBuilder();
 
