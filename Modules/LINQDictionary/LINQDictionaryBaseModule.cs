@@ -16,33 +16,25 @@ namespace SandboxModule.Modules.LINQDictionary
 
         }
 
+        // TODO (?? maybe)
+        // create handler to prepare things like random lists and then feed it into each of these methods 
+
 
         public Stopwatch Aggregatev1([FromBody] LINQParameterConfigurationModel configuration)
         {
-            string[] fruits = { "apple", "mango", "orange", "passionfruit", "grape" };
+            var randomStringList = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                            configuration.RandomStringLength,
+                                                            configuration.RandomStringListVariance);
 
-            // create a list of strings of variable length
-                // lower limit
-                // upper limit
-                // number of strings 
-                // generate random list
-
-
-            // create seed string
-
-
-
-
-            // Determine whether any string in the array is longer than "banana".
-            string longestName =
-                fruits.Aggregate("banana",
-                                (longest, next) =>
-                                    next.Length > longest.Length ? next : longest,
-                                fruit => fruit.ToUpper());
+            var randomStringInitialComparison = GenerateRandomString(configuration.RandomStringLength);
 
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            //var dog = randomStringList.Select(x => x + randomStringTransformation);
+            var longestName = randomStringList
+                        .Aggregate(randomStringInitialComparison,(longest, next) =>
+                                next.Length > longest.Length ? 
+                                next : longest,
+                                randomString => randomString.ToUpper());
 
             stopwatch.Stop();
 
