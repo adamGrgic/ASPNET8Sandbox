@@ -150,6 +150,67 @@ namespace SandboxModule.Modules.LINQDictionary
 
         }
 
+        public Stopwatch Appendv1([FromBody] LINQParameterConfigurationModel configuration)
+        {
+            // generate random list of strings
+            var randomStringList = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                            configuration.RandomStringLength,
+                                                            configuration.RandomStringListVariance);
+
+            // generate random string
+            var randomString = GenerateRandomString(configuration.RandomStringLength);
+
+            // take each item from second list of strings and append to original list
+            var stopwatch = Stopwatch.StartNew();
+
+            var newStringList = randomStringList.Append(randomString).ToList();
+
+            stopwatch.Stop();
+
+            return stopwatch;
+        }
+
+        public Stopwatch Parallelv1([FromBody]LINQParameterConfigurationModel configuration)
+        {
+            var stringList = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                        configuration.RandomStringLength,
+                                                        configuration.RandomStringListVariance);
+
+            var stringListTwo = new List<string>();
+
+            var stopwatch = Stopwatch.StartNew();
+
+            stringList.AsParallel().ForAll(stringItem =>
+            {
+                lock (stringList)
+                {
+                    stringListTwo.Add(stringItem);
+                }
+            });
+
+            stopwatch.Stop();
+
+            return stopwatch;
+        }
+
+        
+        public Stopwatch Appendv2([FromBody] LINQParameterConfigurationModel configuration)
+        {
+            
+            var randomNumberList = new List<int> {1, 2, 3, 4, 5 };
+
+            var number = 10;
+
+            
+            var stopwatch = Stopwatch.StartNew();
+
+            var newNumberList = randomNumberList.Append(number).ToList();
+
+            stopwatch.Stop();
+
+            return stopwatch;
+        }
+
 
         private List<string> GenerateRandomStringList(int numberOfStrings, int stringLength, int stringVariance)
         {
