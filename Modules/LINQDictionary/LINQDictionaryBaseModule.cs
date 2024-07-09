@@ -211,6 +211,37 @@ namespace SandboxModule.Modules.LINQDictionary
             return stopwatch;
         }
 
+        public Stopwatch SelectManyv1([FromBody] LINQParameterConfigurationModel configuration)
+        {
+            var randomStringListOfLists = new List<List<string>>();
+
+            var randomStringList1 = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                        configuration.RandomStringLength,
+                                                        configuration.RandomStringListVariance);
+
+            var randomStringList2 = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                        configuration.RandomStringLength,
+                                                        configuration.RandomStringListVariance);
+
+            var randomStringList3 = GenerateRandomStringList(configuration.RandomStringListCount,
+                                                        configuration.RandomStringLength,
+                                                        configuration.RandomStringListVariance);
+
+            randomStringListOfLists.Add(randomStringList1);
+            randomStringListOfLists.Add(randomStringList2);
+            randomStringListOfLists.Add(randomStringList3);
+
+
+            var stopwatch = Stopwatch.StartNew();
+
+            var flatList = randomStringListOfLists.SelectMany(x => x).ToList();
+
+            stopwatch.Stop();
+
+            return stopwatch;
+
+        }
+
 
         private List<string> GenerateRandomStringList(int numberOfStrings, int stringLength, int stringVariance)
         {
