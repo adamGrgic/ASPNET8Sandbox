@@ -1,4 +1,4 @@
-﻿namespace SandboxModule.Modules.LeagueOfLegends.LolModels
+﻿namespace SandboxModule.LeagueOfLegends.LolModels
 {
     public class DamageStatsDto
     {
@@ -13,7 +13,7 @@
         public int TotalDamageTaken { get; set; }
         public int TrueDamageDone { get; set; }
         public int TrueDamageDoneToChampions { get; set; }
-        public int TrueDamageTaken { get; set;}
+        public int TrueDamageTaken { get; set; }
 
     }
 }

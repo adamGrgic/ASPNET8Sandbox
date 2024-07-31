@@ -1,4 +1,4 @@
-﻿namespace SandboxModule.Modules.LeagueOfLegends.LolModels
+﻿namespace SandboxModule.LeagueOfLegends.LolModels
 {
     public class TimelineDto
     {
