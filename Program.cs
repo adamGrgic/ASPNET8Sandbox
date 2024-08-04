@@ -8,11 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 
 builder.Services.AddControllers();
-builder.Services.AddControllersWithViews()
-    .AddRazorOptions(options =>
-    {
-        options.ViewLocationFormats.Add("/Modules/LINQDictionary/Views/{1}/{0}.cshtml");
-    });
+builder.Services.AddControllersWithViews();
+    //.AddRazorOptions(options =>
+    //{
+    //    options.ViewLocationFormats.Add("/Modules/LINQDictionary/Views/{1}/{0}.cshtml");
+    //});
+    // ^shouldn't need to use this in a normal architecture 
 
 var app = builder.Build();
 
