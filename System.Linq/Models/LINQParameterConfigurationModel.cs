@@ -1,4 +1,4 @@
-﻿namespace SandboxModule.Modules.LINQDictionary.Models
+﻿namespace SandboxModule.System.Linq.Models
 {
     public class LINQParameterConfigurationModel
     {
@@ -7,7 +7,7 @@
         public int RandomStringListCount { get; set; }
         public int RandomStringTransformationLength { get; set; }
         public int RandomStringListVariance { get; set; }
-        public int RandomNumberSelection {  get; set; }
+        public int RandomNumberSelection { get; set; }
         public int RandomNumberVarianceSelection { get; set; }
     }
 }

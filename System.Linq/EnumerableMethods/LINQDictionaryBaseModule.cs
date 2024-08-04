@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SandboxModule;
-using SandboxModule.Modules.LINQDictionary.Models;
+using SandboxModule.System.Linq.Models;
 using System.Diagnostics;
 using System.Text;
 
