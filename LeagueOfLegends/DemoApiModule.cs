@@ -3,11 +3,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 using System.Text;
 using SandboxModule.LeagueOfLegends.LolModels;
-
+using System.Web;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SandboxModule.LeagueOfLegends
 {
@@ -17,10 +16,11 @@ namespace SandboxModule.LeagueOfLegends
     {
 
         private readonly HttpClient _httpClient;
-
-        public DemoApiModule(HttpClient httpClient)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public DemoApiModule(HttpClient httpClient, IWebHostEnvironment webHostEnvironment)
         {
 
+            _webHostEnvironment = webHostEnvironment;
             _httpClient = httpClient;
 
         }
@@ -96,8 +96,8 @@ namespace SandboxModule.LeagueOfLegends
             // TODO: consider other export options
 
             var csv = new StringBuilder();
-
-            CsvHelper.WriteListToCsv(metrics, "test.csv");
+            var directory = $"{_webHostEnvironment.ContentRootPath}/LeagueOfLegends/CsvOutput";
+            CsvHelper.WriteListToCsv(metrics, $"{directory}/analytics{DateTime.Now:yyyyMMddHHmmssffff}");
             return Ok(metrics);
         }
 
