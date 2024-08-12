@@ -4,8 +4,6 @@ This is a repository for testing .NET concepts and scenarios. The structure of t
 # Projects
 ## LINQ
 
-### Buckstars
-Sample coffee shop chain - useful for replicating real world scenarios
 
 ## League of Legends
 
