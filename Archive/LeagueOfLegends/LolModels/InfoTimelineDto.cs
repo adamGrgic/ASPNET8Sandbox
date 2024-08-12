@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SandboxModule.LeagueOfLegends.LolModels
+namespace SandboxModule.Archive.LeagueOfLegends.LolModels
 {
     public class InfoTimelineDto
     {

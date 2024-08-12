@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
-using SandboxModule.LeagueOfLegends.LolModels;
 using System.Web;
 using Microsoft.AspNetCore.Hosting;
+using SandboxModule.Archive.LeagueOfLegends.LolModels;
 
-namespace SandboxModule.LeagueOfLegends
+namespace SandboxModule.Archive.LeagueOfLegends
 {
 
     [Route("[controller]/[action]")]

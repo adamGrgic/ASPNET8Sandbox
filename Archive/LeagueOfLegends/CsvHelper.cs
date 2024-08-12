@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SandboxModule.LeagueOfLegends.LolModels;
+using SandboxModule.Archive.LeagueOfLegends.LolModels;
 using System.Text;
 
-namespace SandboxModule.LeagueOfLegends
+namespace SandboxModule.Archive.LeagueOfLegends
 {
     public static class CsvHelper
     {

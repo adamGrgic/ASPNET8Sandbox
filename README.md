@@ -5,8 +5,10 @@ This is a repository for testing .NET concepts and scenarios. The structure of t
 ## LINQ
 
 
-## League of Legends
 
 ## SandboxClient
 
 ## L33tC0d3
+
+## Archived
+### League of Legends (Archive - used this as a jump off point for another project)

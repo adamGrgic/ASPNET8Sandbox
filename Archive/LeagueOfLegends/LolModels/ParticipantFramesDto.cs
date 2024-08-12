@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
-namespace SandboxModule.LeagueOfLegends.LolModels
+namespace SandboxModule.Archive.LeagueOfLegends.LolModels
 {
     public class ParticipantFramesDto
     {
