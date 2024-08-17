@@ -17,6 +17,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 
         }
 
+        [HttpGet]
         public IActionResult V1()
         {
             var list1 = new List<Person>

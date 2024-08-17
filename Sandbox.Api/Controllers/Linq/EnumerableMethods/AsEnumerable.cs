@@ -7,7 +7,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
     {
         // https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable?view=net-8.0
 
-
+        [HttpGet]
         public bool V1()
         {
 

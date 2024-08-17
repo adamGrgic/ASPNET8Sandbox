@@ -15,7 +15,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 
         }
 
-        // Create a merged list that combines each item from each list into 1
+        [HttpGet]
         public IActionResult V1()
         {
             var numbers = new List<int>() { 1, 2, 3, 4, 5 };
@@ -32,7 +32,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             // 4 four
         }
 
-        // Create a Tuple when merging 3 lists
+        [HttpGet]
         public IActionResult V2()
         {
             var numbers = new List<int>() { 1, 2, 3, 4, 5 };

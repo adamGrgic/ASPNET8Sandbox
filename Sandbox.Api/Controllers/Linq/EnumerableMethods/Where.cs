@@ -7,6 +7,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
     {
         // Use this to help filter a sequence of values
 
+        [HttpGet]
         public IActionResult V1()
         {
             var cars = new List<string>() { "Camry", "Focus", "Spider", "Cyber Truck", "M3" };
@@ -16,6 +17,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return Ok(carsEval);
         }
 
+        [HttpGet]
         public IActionResult V2()
         {
             var fishList = new List<string>() { "Salmon", "Tuna", "Mackeral", "Musky", "Yellow fin" };

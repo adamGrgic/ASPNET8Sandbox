@@ -3,13 +3,20 @@
 
 namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 {
-    public class Select
+    [ApiController]
+    [Route("[controller]")]
+    public class Select : ControllerBase
     {
+        public Select()
+        {
+            
+        }
 
-        public bool TestApi()
+        [HttpGet(Name = "Select")]
+        public IActionResult TestApi()
         {
 
-            return true;
+            return Ok(true);
         }
     }
 }

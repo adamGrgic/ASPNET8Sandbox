@@ -18,7 +18,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
         // TODO (?? maybe)
         // create handler to prepare things like random lists and then feed it into each of these methods 
 
-
+        [HttpGet]
         public Stopwatch Aggregatev1([FromBody] LINQParameterConfigurationModel configuration)
         {
             var randomStringList = GenerateRandomStringList(configuration.RandomStringListCount,
@@ -40,6 +40,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
+        [HttpGet]
         public Stopwatch Selectv1([FromBody] LINQParameterConfigurationModel configuration)
         {
 
@@ -71,7 +72,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
-
+        [HttpGet]
         public Stopwatch SelectToListv1([FromBody] LINQParameterConfigurationModel configuration)
         {
 
@@ -103,6 +104,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
+        [HttpGet]
         public Stopwatch Takev1([FromBody] LINQParameterConfigurationModel configuration)
         {
             var randomStringList = GenerateRandomStringList(
@@ -127,7 +129,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 
         }
 
-        // Check to see if all elements in a sequence satisfy a condition
+        [HttpGet]
         public Stopwatch Allv1([FromBody] LINQParameterConfigurationModel configuration)
         {
 
@@ -149,6 +151,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 
         }
 
+        [HttpGet]
         public Stopwatch Appendv1([FromBody] LINQParameterConfigurationModel configuration)
         {
             // generate random list of strings
@@ -169,6 +172,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
+        [HttpGet]
         public Stopwatch Parallelv1([FromBody] LINQParameterConfigurationModel configuration)
         {
             var stringList = GenerateRandomStringList(configuration.RandomStringListCount,
@@ -192,7 +196,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
-
+        [HttpGet]
         public Stopwatch Appendv2([FromBody] LINQParameterConfigurationModel configuration)
         {
 
@@ -210,6 +214,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
             return stopwatch;
         }
 
+        [HttpGet]
         public Stopwatch SelectManyv1([FromBody] LINQParameterConfigurationModel configuration)
         {
             var randomStringListOfLists = new List<List<string>>();

@@ -10,6 +10,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
     [Route("[controller]/[action]")]
     public class Average : Controller
     {
+        [HttpGet]
         public IActionResult V1()
         {
             int[] numbers = { 25, 69, 500, 746 };
