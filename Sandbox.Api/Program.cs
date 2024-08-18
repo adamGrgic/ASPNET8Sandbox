@@ -29,11 +29,9 @@ namespace Sandbox.Api
             app.UseHttpsRedirection();
 
             app.MapControllers();
-            //app.MapGet("/", () => "Hello API application!");
+            app.MapGet("/", () => "Hello API application!");
 
             app.Run();
-
-
         }
     }
 }
