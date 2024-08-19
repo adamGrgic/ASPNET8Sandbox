@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sandbox.Data.MigrationData;
+using Sandbox.Data.DatabaseContext;
 
 #nullable disable
 
@@ -24,9 +24,11 @@ namespace Sandbox.Data.Migrations
 
             modelBuilder.Entity("Sandbox.Data.Models.Todo.TodoItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CompletedDate")
                         .HasColumnType("datetime2");

@@ -1,8 +1,7 @@
 ﻿using Sandbox.Data.Models.Todo;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 
-namespace Sandbox.Data.MigrationData
+namespace Sandbox.Data.DatabaseContext
 {
     public class TodoDbContext : DbContext
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore;
-using Sandbox.Data.MigrationData;
+using Sandbox.Data.DatabaseContext;
 
 namespace Sandbox.Data
 {

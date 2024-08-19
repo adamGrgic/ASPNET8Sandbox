@@ -12,8 +12,8 @@ using Sandbox.Data.DatabaseContext;
 namespace Sandbox.Data.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    [Migration("20240815035456_CreateUserTable")]
-    partial class CreateUserTable
+    [Migration("20240819021623_DropTodoTable")]
+    partial class DropTodoTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,33 +24,6 @@ namespace Sandbox.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Sandbox.Data.Models.Todo.TodoItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CompletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDone")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Todos");
-                });
 
             modelBuilder.Entity("Sandbox.Data.Models.Todo.User", b =>
                 {

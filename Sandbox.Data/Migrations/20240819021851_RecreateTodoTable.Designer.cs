@@ -12,8 +12,8 @@ using Sandbox.Data.DatabaseContext;
 namespace Sandbox.Data.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    [Migration("20240815035456_CreateUserTable")]
-    partial class CreateUserTable
+    [Migration("20240819021851_RecreateTodoTable")]
+    partial class RecreateTodoTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,11 @@ namespace Sandbox.Data.Migrations
 
             modelBuilder.Entity("Sandbox.Data.Models.Todo.TodoItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CompletedDate")
                         .HasColumnType("datetime2");
