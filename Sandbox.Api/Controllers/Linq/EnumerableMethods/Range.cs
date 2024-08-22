@@ -1,4 +1,6 @@
-﻿namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
 {
     // https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.range?view=net-8.0
     public class Range : ControllerBase
