@@ -19,11 +19,13 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
                 Console.WriteLine(
                     "There are {0} fruits in the collection.",
                     numberOfFruits);
+                return Ok();
             }
             catch (OverflowException)
             {
                 Console.WriteLine("The count is too large to store as an Int32.");
                 Console.WriteLine("Try using the LongCount() method instead.");
+                return BadRequest();
             }
         }
     }
