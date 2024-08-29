@@ -19,6 +19,7 @@ namespace Sandbox.Api.Controllers.Linq.EnumerableMethods
                 Console.WriteLine(
                     "There are {0} fruits in the collection.",
                     numberOfFruits);
+
                 return Ok();
             }
             catch (OverflowException)
