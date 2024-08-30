@@ -46,7 +46,7 @@ namespace Sandbox.Api.Controllers.MemoryManagement
             // they have classes like Products, Inventory, Users, Accounts, Prices, etc, that are declared when the web application is started
             // ... needs more info 
 
-            DoAThing();
+            HeapVStackBasicExample();
 
             return Ok();
         }
@@ -54,7 +54,7 @@ namespace Sandbox.Api.Controllers.MemoryManagement
 
         // start by declaring a new class, Product , and a new struct Dimension
         // observe what you see in the Locals and Autos window, especially when you exit the method
-        private void DoAThing()
+        private void HeapVStackBasicExample()
         {
             var flower = new Product()
             {
