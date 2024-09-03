@@ -28,6 +28,10 @@ namespace Sandbox.Api
 
             var app = builder.Build();
 
+            // Add the IHttpContextFactory to the service collection
+            builder.Services.AddHttpContextAccessor(); // This is needed for IHttpContextAccessor
+            builder.Services.AddSingleton<IHttpContextFactory, DefaultHttpContextFactory>();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -40,6 +44,7 @@ namespace Sandbox.Api
             app.UseAuthorization();
 
             app.MapControllers();
+
 
 
 
