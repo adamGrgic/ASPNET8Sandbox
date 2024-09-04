@@ -26,11 +26,13 @@ namespace Sandbox.Api
             // Register HttpClient
             builder.Services.AddHttpClient();
 
-            var app = builder.Build();
-
             // Add the IHttpContextFactory to the service collection
             builder.Services.AddHttpContextAccessor(); // This is needed for IHttpContextAccessor
             builder.Services.AddSingleton<IHttpContextFactory, DefaultHttpContextFactory>();
+
+            var app = builder.Build();
+
+            
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 
 namespace Sandbox.Api.Modules.DotNetNamespace.DefaultHttpContextFactory
@@ -14,6 +13,7 @@ namespace Sandbox.Api.Modules.DotNetNamespace.DefaultHttpContextFactory
             _httpContextFactory = httpContextFactory;
         }
 
+        // TODO: Fix error when running this
         [HttpGet]
         public IActionResult Index()
         {
