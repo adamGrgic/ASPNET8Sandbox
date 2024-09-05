@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sandbox.Api.Modules.DesignPatterns.FactoryPattern.SimpleFactoryComponents;
+using Sandbox.Api.Modules.DesignPatterns.FactoryPattern.AdvancedShapeFactoryComponents;
 
 
 namespace Sandbox.Api.Modules.DesignPatterns.FactoryPattern
 {
     [Route("[controller]/[action]")]
-    public class BasicFactoryPattern : Controller
+    public class FactoryPatternDemo : Controller
     {
         // In this instance, we create one base interface: IShapeGeneratorSimple
         // Through this interface, we define one method: GenerateShapeSimple()
@@ -23,6 +24,20 @@ namespace Sandbox.Api.Modules.DesignPatterns.FactoryPattern
                 new TriangleGenerator().GenerateShapeSimple()
             };
             
+            return Ok(shapesList);
+        }
+
+
+        [HttpGet]
+        public IActionResult GenerateShapesFactoryAdvanced()
+        {
+            var shapesList = new List<Shape>()
+            {
+                new AdvancedSquareGenerator().GenerateShape(),
+                new AdvancedCircleGenerator().GenerateShape(),
+                new AdvancedTriangleGenerator().GenerateShape()
+            };
+
             return Ok(shapesList);
         }
     }
