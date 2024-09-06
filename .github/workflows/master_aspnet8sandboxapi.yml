@@ -20,6 +20,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
+          
+      - name: Restore Dependencies
+        run: dotnet restore
 
       - name: Run Migrations
         run: dotnet ef database update --project Sandbox.Data/Sandbox.Data.csproj
