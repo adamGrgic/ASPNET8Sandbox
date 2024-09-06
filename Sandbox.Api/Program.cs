@@ -2,7 +2,7 @@ using Sandbox.Data.DatabaseContext; // Ensure you have the correct namespace for
 using Sandbox.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Hosting;
+using System.Diagnostics;
 
 namespace Sandbox.Api
 {
@@ -11,7 +11,6 @@ namespace Sandbox.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            System.Environment.SetEnvironmentVariable("DOTNET_SYSTEM_GLOBALIZATION_INVARIANT", "false");
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -33,6 +32,7 @@ namespace Sandbox.Api
             // Add the IHttpContextFactory to the service collection
             builder.Services.AddHttpContextAccessor(); // This is needed for IHttpContextAccessor
             builder.Services.AddSingleton<IHttpContextFactory, DefaultHttpContextFactory>();
+
             var app = builder.Build();
 
 
@@ -54,6 +54,28 @@ namespace Sandbox.Api
 
 
             app.Run();
+        }
+
+        void RunDatabaseProject()
+        {
+            // Example: Execute database project via command line
+            var processInfo = new ProcessStartInfo
+            {
+                FileName = "dotnet",
+                Arguments = "run --project $(SolutionDir)Sandbox.Database/Sandbox.Database.csproj", // Path to your database project
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (var process = Process.Start(processInfo))
+            {
+                process.WaitForExit();
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception("Database project failed to start");
+                }
+            }
         }
     }
 }

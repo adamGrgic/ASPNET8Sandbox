@@ -12,8 +12,8 @@ using Sandbox.Data.DatabaseContext;
 namespace Sandbox.Data.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    [Migration("20240819021851_RecreateTodoTable")]
-    partial class RecreateTodoTable
+    [Migration("20240906223644_RemoveCategory")]
+    partial class RemoveCategory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

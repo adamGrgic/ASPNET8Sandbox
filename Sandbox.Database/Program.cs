@@ -29,7 +29,7 @@ namespace Sandbox.Database
                 }
             }
 
-            Environment.SetEnvironmentVariable("DOTNET_SYSTEM_GLOBALIZATION_INVARIANT", "false");
+            //Environment.SetEnvironmentVariable("DOTNET_SYSTEM_GLOBALIZATION_INVARIANT", "false");
 
         }
     }

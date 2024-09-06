@@ -23,15 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sandbox.Database\Sandbox.Database.csproj" />
     <ProjectReference Include="..\Sandbox.Data\Sandbox.Data.csproj" />
   </ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="msbuild ../Sandbox.Database/Sandbox.Database.csproj" />
-	</Target>
-	<Target Name="RunDatabaseMigration" AfterTargets="Build">
-		<Exec Command="dotnet run --project &quot;$(SolutionDir)Sandbox.Database/Sandbox.Database.csproj&quot;" />
-	</Target>
 
 
 
