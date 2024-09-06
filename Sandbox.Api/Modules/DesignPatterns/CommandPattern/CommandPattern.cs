@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Sandbox.Api.Modules.DesignPatterns
+namespace Sandbox.Api.Modules.DesignPatterns.CommandPattern
 {
-    public class Base : Controller
+    public class CommandPattern : Controller
     {
         public IActionResult Index()
         {

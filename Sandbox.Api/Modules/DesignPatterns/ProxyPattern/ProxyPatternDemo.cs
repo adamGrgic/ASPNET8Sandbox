@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Sandbox.Api.Modules.DesignPatterns
+namespace Sandbox.Api.Modules.DesignPatterns.ProxyPattern
 {
-    public class PublisherSubscriberPattern : Controller
+    public class ProxyPatternDemo : Controller
     {
         public IActionResult Index()
         {

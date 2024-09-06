@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Sandbox.Api.Modules.DesignPatterns
+namespace Sandbox.Api.Modules.DesignPatterns.DependencyInjectionPattern
 {
     public class DependencyInjectionPattern : Controller
     {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sandbox.Data.Models.Todo;
 using Sandbox.Data.Repositories;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Sandbox.Api.Controllers
 {

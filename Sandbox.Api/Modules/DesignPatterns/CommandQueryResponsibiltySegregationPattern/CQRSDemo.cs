@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Sandbox.Api.Modules.DesignPatterns
+namespace Sandbox.Api.Modules.DesignPatterns.CommandQueryResponsibiltySegregationPattern
 {
-    public class SingletonPattern : Controller
+    public class CQRSDemo : Controller
     {
         public IActionResult Index()
         {
