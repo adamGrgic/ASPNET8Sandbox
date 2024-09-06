@@ -20,7 +20,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
-  
+
+      - name: Run Migrations
+        run: dotnet ef database update --project Sandbox.Data/Sandbox.Data.csproj
+        
       - name: Build with dotnet
         run: dotnet build Sandbox.Api  --configuration Release
   
