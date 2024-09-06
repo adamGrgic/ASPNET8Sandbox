@@ -24,6 +24,9 @@ jobs:
       - name: Restore Dependencies
         run: dotnet restore
 
+      - name: Install dotnet-ef tool
+        run: dotnet tool install --global dotnet-ef
+        
       - name: Run Migrations
         run: dotnet ef database update --project Sandbox.Data/Sandbox.Data.csproj
         
