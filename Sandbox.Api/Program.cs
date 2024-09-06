@@ -1,6 +1,8 @@
 using Sandbox.Data.DatabaseContext; // Ensure you have the correct namespace for TodoDbContext
 using Sandbox.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Hosting;
 
 namespace Sandbox.Api
 {
@@ -26,14 +28,15 @@ namespace Sandbox.Api
             // Register HttpClient
             builder.Services.AddHttpClient();
 
+            builder.Services.AddMemoryCache();
+
             // Add the IHttpContextFactory to the service collection
             builder.Services.AddHttpContextAccessor(); // This is needed for IHttpContextAccessor
             builder.Services.AddSingleton<IHttpContextFactory, DefaultHttpContextFactory>();
-
             var app = builder.Build();
 
-            
 
+            IMemoryCache cache = app.Services.GetRequiredService<IMemoryCache>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
