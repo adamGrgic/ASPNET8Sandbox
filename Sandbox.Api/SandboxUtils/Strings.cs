@@ -2,7 +2,7 @@
 
 namespace Sandbox.Api.SandboxUtils
 {
-    public static class Strings
+    public static class StringsUtility
     {
         public static List<string> GenerateRandomStringList(int numberOfStrings, int stringLength, int stringVariance)
         {

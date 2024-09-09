@@ -14,7 +14,7 @@ namespace Sandbox.Api.Modules.System.Threaded.Tasks
         {
             long totalSizeParallel = 0;
             long totalSizeNormal = 0;
-            var stringList = Strings.GenerateRandomStringList(numberOfStrings: 100, stringLength: 75, stringVariance: 25);
+            var stringList = StringsUtility.GenerateRandomStringList(numberOfStrings: 100, stringLength: 75, stringVariance: 25);
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();

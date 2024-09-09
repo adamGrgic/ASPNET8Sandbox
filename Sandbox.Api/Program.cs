@@ -3,6 +3,9 @@ using Sandbox.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System.Diagnostics;
+using Sandbox.Api.Controllers.Linq.EnumerableMethods;
+using Sandbox.Api.Modules.Linq.EnumerableMethods.Select.Service;
+using BenchmarkDotNet.Running;
 
 namespace Sandbox.Api
 {
@@ -33,6 +36,12 @@ namespace Sandbox.Api
             builder.Services.AddHttpContextAccessor(); // This is needed for IHttpContextAccessor
             builder.Services.AddSingleton<IHttpContextFactory, DefaultHttpContextFactory>();
 
+            // note: can probably use a factory for creating these services since their uses are very specific / not needed across the entire application lifecycle
+            builder.Services.AddScoped<ISelectService, SelectService>();
+
+
+
+
             var app = builder.Build();
 
 
@@ -54,28 +63,14 @@ namespace Sandbox.Api
 
 
             app.Run();
+
+            // todo: make a conditional run parameter for this
+
+            // ...ideating. Might need some sort of wrapper function
+            // maybe define certain scenarios
+            // var thing = new SelectService();
+            // var summary = BenchmarkRunner.Run<SelectService>();
         }
 
-        void RunDatabaseProject()
-        {
-            // Example: Execute database project via command line
-            var processInfo = new ProcessStartInfo
-            {
-                FileName = "dotnet",
-                Arguments = "run --project $(SolutionDir)Sandbox.Database/Sandbox.Database.csproj", // Path to your database project
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            using (var process = Process.Start(processInfo))
-            {
-                process.WaitForExit();
-                if (process.ExitCode != 0)
-                {
-                    throw new Exception("Database project failed to start");
-                }
-            }
-        }
     }
 }
