@@ -6,6 +6,7 @@ using System.Diagnostics;
 using Sandbox.Api.Controllers.Linq.EnumerableMethods;
 using Sandbox.Api.Modules.Linq.EnumerableMethods.Select.Service;
 using BenchmarkDotNet.Running;
+using Microsoft.Extensions.Logging.Console;
 
 namespace Sandbox.Api
 {
@@ -14,6 +15,8 @@ namespace Sandbox.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -39,13 +42,10 @@ namespace Sandbox.Api
             // note: can probably use a factory for creating these services since their uses are very specific / not needed across the entire application lifecycle
             builder.Services.AddScoped<ISelectService, SelectService>();
 
-
-
-
             var app = builder.Build();
 
 
-            IMemoryCache cache = app.Services.GetRequiredService<IMemoryCache>();
+            //IMemoryCache cache = app.Services.GetRequiredService<IMemoryCache>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -56,13 +56,20 @@ namespace Sandbox.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.Logger.LogInformation("Mapping routes");
 
             app.MapControllers();
 
 
-
+            app.Logger.LogInformation("App is running");
 
             app.Run();
+            app.MapGet("/Test", async (ILogger<Program> logger, HttpResponse response) =>
+            {
+                logger.LogInformation("Testing logging in Program.cs");
+                await response.WriteAsync("Testing");
+            });
+
 
             // todo: make a conditional run parameter for this
 
