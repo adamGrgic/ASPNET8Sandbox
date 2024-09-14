@@ -10,6 +10,7 @@ using Sandbox.Api.Modules.Linq.EnumerableMethods.Select.Service;
 using BenchmarkDotNet.Running;
 using Microsoft.Extensions.Logging.Console;
 using Sandbox.Api.Modules.DependencyInjection;
+using Sandbox.Api.Modules.DesignPatterns.FactoryPattern.AdvancedShapeFactoryComponents;
 
 namespace Sandbox.Api
 {
@@ -20,6 +21,18 @@ namespace Sandbox.Api
             var builder = WebApplication.CreateBuilder(args);
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:5173")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
+
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -56,6 +69,8 @@ namespace Sandbox.Api
 
 
             var app = builder.Build();
+
+            app.UseCors("AllowReactApp");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
