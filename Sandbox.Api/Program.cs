@@ -1,12 +1,15 @@
 using Sandbox.Data.DatabaseContext; // Ensure you have the correct namespace for TodoDbContext
 using Sandbox.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
 using System.Diagnostics;
 using Sandbox.Api.Controllers.Linq.EnumerableMethods;
 using Sandbox.Api.Modules.Linq.EnumerableMethods.Select.Service;
 using BenchmarkDotNet.Running;
 using Microsoft.Extensions.Logging.Console;
+using Sandbox.Api.Modules.DependencyInjection;
 
 namespace Sandbox.Api
 {
@@ -42,10 +45,18 @@ namespace Sandbox.Api
             // note: can probably use a factory for creating these services since their uses are very specific / not needed across the entire application lifecycle
             builder.Services.AddScoped<ISelectService, SelectService>();
 
+            // The purpose of a keyed singleton is to allow multiple singleton instances of the
+            // same class, each identified by a unique key, while still adhering to the singleton
+            // lifecycle for each individual instance.
+
+            // See Modules.DependencyInjection
+            builder.Services.AddKeyedSingleton<ICache, BigCache>("big");
+            builder.Services.AddKeyedSingleton<ICache, SmallCache>("small");
+            //
+
+
             var app = builder.Build();
 
-
-            //IMemoryCache cache = app.Services.GetRequiredService<IMemoryCache>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
