@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.Api", "Sandbox.Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.Data", "Sandbox.Data\Sandbox.Data.csproj", "{7A5D0DE5-B432-449D-981D-53AB4FDDF256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.Database", "Sandbox.Database\Sandbox.Database.csproj", "{D1E661EC-4E28-434B-9198-54D16CEECECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.Database", "Sandbox.Database\Sandbox.Database.csproj", "{D1E661EC-4E28-434B-9198-54D16CEECECB}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sandbox.reactclient", "Sandbox.ReactClient\sandbox.reactclient.esproj", "{C9071660-191D-49BE-AB3B-5ECB250D167C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,12 @@ Global
 		{D1E661EC-4E28-434B-9198-54D16CEECECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E661EC-4E28-434B-9198-54D16CEECECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E661EC-4E28-434B-9198-54D16CEECECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
