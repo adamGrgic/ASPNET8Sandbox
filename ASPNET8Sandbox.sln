@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.Database", "Sandbox
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sandbox.reactclient", "Sandbox.ReactClient\sandbox.reactclient.esproj", "{C9071660-191D-49BE-AB3B-5ECB250D167C}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sandbox.vue", "sandbox.vue\sandbox.vue.esproj", "{E44C7120-BAD1-432A-BB60-0781F95315D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C9071660-191D-49BE-AB3B-5ECB250D167C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44C7120-BAD1-432A-BB60-0781F95315D8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
