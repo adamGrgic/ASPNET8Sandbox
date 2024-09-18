@@ -1,10 +1,10 @@
-﻿namespace Sandbox.Api.Modules.DSA
+﻿namespace Sandbox.Api.Modules.DataStructuresAndAlgorithms.BinarySearchTree
 {
     public class TreeNode
     {
-        public int Value;
-        public TreeNode Left;
-        public TreeNode Right;
+        public int Value { get; set; }
+        public TreeNode Left { get; set; }
+        public TreeNode Right { get; set; }
 
         public TreeNode(int value)
         {
@@ -14,7 +14,7 @@
         }
     }
 
-    public class BinarySearchTree
+    public class BinarySearchTree : IBinarySearchTree
     {
         private TreeNode root;
 
@@ -74,21 +74,49 @@
             }
         }
 
-        public void InOrderTraversal()
+        public List<int> InOrderTraversal()
         {
-            InOrderRec(root);
-            Console.WriteLine(); // For a new line after traversal
+            var result = new List<int>();
+            InOrderRec(root, result);
+            return result;
         }
 
-        private void InOrderRec(TreeNode node)
+        private void InOrderRec(TreeNode node, List<int> result)
         {
             if (node != null)
             {
-                InOrderRec(node.Left);
-                Console.Write(node.Value + " ");
-                InOrderRec(node.Right);
+                InOrderRec(node.Left, result);
+                result.Add(node.Value);
+                InOrderRec(node.Right, result);
             }
         }
+
+        public TreeNode GetTree()
+        {
+            return root;
+        }
+
+        // New method to execute all operations and return results
+        public (List<int> Traversal, bool SearchResult, TreeNode Tree) ExecuteTreeOperations(int[] valuesToInsert, int valueToSearch)
+        {
+            // Step 1: Insert values
+            foreach (var value in valuesToInsert)
+            {
+                Insert(value);
+            }
+
+            // Step 2: Search for a value
+            bool searchResult = Search(valueToSearch);
+
+            // Step 3: Perform in-order traversal
+            List<int> traversal = InOrderTraversal();
+
+            // Step 4: Return the entire tree structure
+            TreeNode tree = GetTree();
+
+            return (traversal, searchResult, tree);
+        }
     }
+
 
 }

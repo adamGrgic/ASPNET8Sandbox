@@ -11,6 +11,7 @@ using BenchmarkDotNet.Running;
 using Microsoft.Extensions.Logging.Console;
 using Sandbox.Api.Modules.DependencyInjection;
 using Sandbox.Api.Modules.DesignPatterns.FactoryPattern.AdvancedShapeFactoryComponents;
+using Sandbox.Api.Modules.DataStructuresAndAlgorithms.BinarySearchTree;
 
 namespace Sandbox.Api
 {
@@ -57,6 +58,7 @@ namespace Sandbox.Api
 
             // note: can probably use a factory for creating these services since their uses are very specific / not needed across the entire application lifecycle
             builder.Services.AddScoped<ISelectService, SelectService>();
+            builder.Services.AddScoped<IBinarySearchTree, BinarySearchTree>();
 
             // The purpose of a keyed singleton is to allow multiple singleton instances of the
             // same class, each identified by a unique key, while still adhering to the singleton
